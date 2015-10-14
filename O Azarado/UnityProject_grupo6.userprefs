@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\instancia.cs">
+    <Files>
+      <File FileName="Assets\scripts\instancia.cs" Line="78" Column="35" />
+      <File FileName="Assets\scripts\player.cs" Line="55" Column="47" />
+      <File FileName="Assets\scripts\carro.cs" Line="27" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
