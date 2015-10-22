@@ -2,14 +2,18 @@
 using System.Collections;
 
 public class player : MonoBehaviour {
+
 	public static Animator animator;
 	int px = 1;
+
 	void Start () {	
 
 		animator = gameObject.GetComponent<Animator>();
 		
 	}
-	void Update () {
+
+	void Update () 
+	{
 		if (button.stop == false) {
 
 			if (carro.parar == false) {
@@ -34,25 +38,25 @@ public class player : MonoBehaviour {
 			
 				case 1:
 
-					if(transform.localPosition.x >= -0.85f)
+					if(transform.localPosition.x >= -0.8f)
 						transform.Translate(-0.5f,0f,0f);
 
-					if(transform.localPosition.x < -0.85f)
+					if(transform.localPosition.x < -0.8f)
 						transform.Translate(0.5f,0f,0f);
 					break;
 			
 				case 2:
 
-					if(transform.localPosition.x >= 0.77f)
+					if(transform.localPosition.x >= 0.8f)
 						transform.Translate(-0.5f,0f,0f);
 					
-					if(transform.localPosition.x < 0.77f)
+					if(transform.localPosition.x < 0.8f)
 						transform.Translate(0.5f,0f,0f);
 					break;
 			
 				case 3:
 
-					if(transform.localPosition.x < 2.326221f)
+					if(transform.localPosition.x < 2.4f)
 						transform.Translate(0.5f,0f,0f);
 					break;
 			

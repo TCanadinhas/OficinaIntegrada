@@ -4,13 +4,13 @@ using System.Collections;
 public class instancia : MonoBehaviour {
 
 	public GameObject empty, boeiro, saco, arvore, poste, mendigo;
-	float t, x, f;
+	float t, x, f, time;
 	int random;
 	
 	
 	// Use this for initialization
 	void Start () {
-		
+		time = 5f;
 	}
 
 	public void turnEmptyTo(int value)
@@ -34,7 +34,8 @@ public class instancia : MonoBehaviour {
 				break;
 
 			case 4:
-				empty = poste;
+				if (time == 0f)
+					empty = poste;
 				break;
         }
 	}
@@ -45,6 +46,8 @@ public class instancia : MonoBehaviour {
 		if (button.stop == false) {
 
 			if (carro.parar == false) {
+
+				time -= Time.deltaTime;
 
 				f += 0.05f;
 		
@@ -57,31 +60,38 @@ public class instancia : MonoBehaviour {
 					switch (random) {
 						
 					case 0:
-						turnEmptyTo(0);
+						//turnEmptyTo(0);
+						turnEmptyTo(4);
 						x = -2.4f;
 						//print("coluna 1 || " + empty);
 						break;
 
 					case 1:
-						turnEmptyTo(Random.Range(0,2));
-						x = -0.85f;
+						//turnEmptyTo(Random.Range(0,2));
+						turnEmptyTo(4);
+						x = -0.8f;
 						//print("coluna 2 || " + empty);
 						break;
 
 					case 2:
-						turnEmptyTo(Random.Range(0,5));
-						x = 0.77f;
+						//turnEmptyTo(Random.Range(0,5));
+						turnEmptyTo(4);
+						x = 0.8f;
 						//print("coluna 3 || " + empty);
 						break;
 						
 					case 3:
-						turnEmptyTo(Random.Range(1,4));
-						x = 2.326221f;
+						//turnEmptyTo(Random.Range(1,4));
+						turnEmptyTo(4);
+						x = 2.4f;
 						//print("coluna 4 || " + empty);
 						break;				
 					}
 
 					Instantiate (empty, new Vector3 (x, 8f, 0f), Quaternion.identity);
+					
+					if (time <= 0f)
+						time = 5f;
 				}
 			}
 		}
