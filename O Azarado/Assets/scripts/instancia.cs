@@ -4,13 +4,25 @@ using System.Collections;
 public class instancia : MonoBehaviour {
 
 	public GameObject empty, boeiro, saco, arvore, poste, mendigo;
-	float t, x, f, time;
+	float t, x, f;
 	int random;
 	
+	public float maxTime = 3;
+	public float minTime = 1;
 	
+	//current time
+	private float time;
+	
+	//The time to spawn the object
+	private float spawnTime;
+
+
 	// Use this for initialization
 	void Start () {
-		time = 5f;
+		//time = 5f;
+		
+		SetRandomTime();
+		time = minTime;
 	}
 
 	public void turnEmptyTo(int value)
@@ -34,8 +46,7 @@ public class instancia : MonoBehaviour {
 				break;
 
 			case 4:
-				if (time == 0f)
-					empty = poste;
+				empty = poste;
 				break;
         }
 	}
@@ -47,7 +58,7 @@ public class instancia : MonoBehaviour {
 
 			if (carro.parar == false) {
 
-				time -= Time.deltaTime;
+				//time -= Time.deltaTime;
 
 				f += 0.05f;
 		
@@ -60,40 +71,74 @@ public class instancia : MonoBehaviour {
 					switch (random) {
 						
 					case 0:
-						//turnEmptyTo(0);
-						turnEmptyTo(4);
+						turnEmptyTo(0);
+						//turnEmptyTo(4);
 						x = -2.4f;
 						//print("coluna 1 || " + empty);
 						break;
 
 					case 1:
-						//turnEmptyTo(Random.Range(0,2));
-						turnEmptyTo(4);
+						turnEmptyTo(Random.Range(0,2));
+						//turnEmptyTo(4);
 						x = -0.8f;
 						//print("coluna 2 || " + empty);
 						break;
 
 					case 2:
-						//turnEmptyTo(Random.Range(0,5));
-						turnEmptyTo(4);
+						turnEmptyTo(Random.Range(0,5));
+						//turnEmptyTo(4);
 						x = 0.8f;
 						//print("coluna 3 || " + empty);
 						break;
 						
 					case 3:
-						//turnEmptyTo(Random.Range(1,4));
-						turnEmptyTo(4);
+						turnEmptyTo(Random.Range(1,4));
+						//turnEmptyTo(4);
 						x = 2.4f;
 						//print("coluna 4 || " + empty);
 						break;				
 					}
 
-					Instantiate (empty, new Vector3 (x, 8f, 0f), Quaternion.identity);
+
 					
-					if (time <= 0f)
-						time = 5f;
+					//if (time <= 0f)
+						//time = 5f;
+
+
+
 				}
 			}
 		}
+	}
+
+	void FixedUpdate(){
+		
+		//Counts up
+		time += Time.deltaTime;
+		
+		//Check if its the right time to spawn the object
+		if(time >= spawnTime){
+			SpawnObject();
+			SetRandomTime();
+		}
+
+		/*
+		do {
+			minTime--;
+			maxTime--;
+		} while(minTime >= 1 && maxTime >= 1);
+		*/
+	}
+	
+	
+	//Spawns the object and resets the time
+	void SpawnObject(){
+		time = 0;
+		Instantiate (empty, new Vector3 (x, 8f, 0f), Quaternion.identity);;
+	}
+	
+	//Sets the random time between minTime and maxTime
+	void SetRandomTime(){
+		spawnTime = Random.Range(minTime, maxTime);
 	}
 }
